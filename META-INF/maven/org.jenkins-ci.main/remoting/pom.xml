@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+The MIT License
+
+Copyright (c) 2004-2009, Sun Microsystems, Inc., Kohsuke Kawaguchi, Daniel Dyer, Stephen Connolly
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-->
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.jenkins-ci.main</groupId>
+  <artifactId>remoting</artifactId>
+  <version>3.36</version>
+  <name>Jenkins remoting layer</name>
+  <description>Contains the bootstrap code to bridge separate JVMs into a single semi-shared space.
+    Reusable outside Jenkins.</description>
+  <url>https://jenkins.io/remoting/</url>
+  <inceptionYear>2004</inceptionYear>
+  <licenses>
+    <license>
+      <name>The MIT license</name>
+      <url>https://opensource.org/licenses/MIT</url>
+      <distribution>repo</distribution>
+    </license>
+    <license>
+      <name>Apache License 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+  <mailingLists>
+    <mailingList>
+      <name>Jenkins advisories list</name>
+      <subscribe>jenkinsci-advisories+subscribe@googlegroups.com</subscribe>
+      <unsubscribe>jenkinsci-advisories+unsubscribe@googlegroups.com</unsubscribe>
+    </mailingList>
+    <mailingList>
+      <name>Jenkins developer discussion list</name>
+      <subscribe>jenkinsci-dev+subscribe@googlegroups.com</subscribe>
+      <unsubscribe>jenkinsci-dev+unsubscribe@googlegroups.com</unsubscribe>
+      <post>jenkinsci-dev@googlegroups.com</post>
+      <archive>http://jenkins.361315.n4.nabble.com/Jenkins-dev-f387835.html</archive>
+      <otherArchives>
+        <otherArchive>http://hudson.361315.n4.nabble.com/Hudson-dev-f387835.html</otherArchive>
+      </otherArchives>
+    </mailingList>
+    <mailingList>
+      <name>Jenkins issues list</name>
+      <subscribe>jenkinsci-issues+subscribe@googlegroups.com</subscribe>
+      <unsubscribe>jenkinsci-issues+unsubscribe@googlegroups.com</unsubscribe>
+    </mailingList>
+    <mailingList>
+      <name>Jenkins user discussion list</name>
+      <subscribe>jenkinsci-users+subscribe@googlegroups.com</subscribe>
+      <unsubscribe>jenkinsci-users+unsubscribe@googlegroups.com</unsubscribe>
+      <post>jenkinsci-users@googlegroups.com</post>
+      <archive>http://jenkins.361315.n4.nabble.com/Jenkins-users-f361316.html</archive>
+      <otherArchives>
+        <otherArchive>http://hudson.361315.n4.nabble.com/Hudson-users-f361316.html</otherArchive>
+      </otherArchives>
+    </mailingList>
+    <mailingList>
+      <name>Hudson Japanese user discussion list</name>
+      <subscribe>hudson-ja+subscribe@googlegroups.com</subscribe>
+      <unsubscribe>hudson-ja+unsubscribe@googlegroups.com</unsubscribe>
+      <post>hudson-ja@googlegroups.com</post>
+      <archive>http://hudson.361315.n4.nabble.com/Hudson-ja-f361157.html</archive>
+    </mailingList>
+  </mailingLists>
+  <scm>
+    <connection>scm:git:git://github.com/jenkinsci/remoting.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/jenkinsci/remoting.git</developerConnection>
+    <tag>remoting-3.36</tag>
+    <url>https://github.com/jenkinsci/remoting</url>
+  </scm>
+  <issueManagement>
+    <system>JIRA</system>
+    <url>http://issues.jenkins-ci.org</url>
+  </issueManagement>
+  <ciManagement>
+    <system>Jenkins</system>
+    <url>https://ci.jenkins.io</url>
+  </ciManagement>
+  <distributionManagement>
+    <repository>
+      <id>maven.jenkins-ci.org</id>
+      <url>https://repo.jenkins-ci.org/releases/</url>
+    </repository>
+    <snapshotRepository>
+      <id>maven.jenkins-ci.org</id>
+      <url>https://repo.jenkins-ci.org/snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>
+  <dependencies>
+    <dependency>
+      <groupId>org.codehaus.mojo</groupId>
+      <artifactId>animal-sniffer-annotations</artifactId>
+      <version>1.17</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>args4j</groupId>
+      <artifactId>args4j</artifactId>
+      <version>2.33</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jvnet</groupId>
+      <artifactId>animal-sniffer-annotation</artifactId>
+      <version>1.0</version>
+      <scope>compile</scope>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci</groupId>
+      <artifactId>constant-pool-scanner</artifactId>
+      <version>1.2</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.github.spotbugs</groupId>
+      <artifactId>spotbugs-annotations</artifactId>
+      <version>3.1.12</version>
+      <scope>compile</scope>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.kohsuke</groupId>
+      <artifactId>access-modifier-annotation</artifactId>
+      <version>1.12</version>
+      <scope>compile</scope>
+      <optional>true</optional>
+    </dependency>
+  </dependencies>
+  <repositories>
+    <repository>
+      <id>repo.jenkins-ci.org</id>
+      <url>https://repo.jenkins-ci.org/public/</url>
+    </repository>
+  </repositories>
+</project>

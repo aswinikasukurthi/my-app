@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Built-By: kohsuke
+Jenkins-CLI-Version: 2.204.1
+Created-By: Apache Maven 3.6.1
+Build-Jdk: 1.8.0_144
+Main-Class: hudson.cli.CLI
+
